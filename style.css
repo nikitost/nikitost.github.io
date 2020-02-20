@@ -1,0 +1,86 @@
+h1 {margin: 0; font-family: sans-serif;	font-size: 72px; max-width: 720px; }
+h2 {margin: 10px; font-family: sans-serif; font-size: 64px; text-align: center;}
+p {font-family: Verdana; font-size: 24px;}
+header{padding: 20px 220px; color: white; background-color: rgb(51,51,102);}
+footer{padding: 20px 220px; color: white; background-color: rgb(85, 128, 85);}
+html, body { margin: 0;	min-width: 1280px;}
+section{padding: 40px 220px;}
+
+#aboutmesect{
+	height: 600px;
+	color: white;
+	background-color: black;
+	position: relative;
+}
+#aboutmesect p{
+	margin: 0 380px 40px 0;
+	max-width: 720px;
+	position: relative;
+}
+#aboutmesect h1{
+	position: relative;
+	margin: -560px 400px 40px 0;
+}
+#aboutmesect img{
+	display: block;
+	margin-left: auto;
+	margin-right: 0;
+	max-height: 560px;
+}
+#aboutmesect div{
+	margin: 0 auto;
+	max-width: 1400px;
+}
+#workandstudysect{
+	background-color: rgb(244,244,244);
+}
+.storypart{
+	position: relative;
+	margin: 40px auto;
+	max-width: 1400px;
+}
+.storypart img {
+	max-width: 200px;
+	max-height: 200px;
+	clip-path: circle();
+}
+.storypart p {
+	margin: 0;
+	position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 240px;
+}
+#contactssect{
+	color: white;
+	background-color: rgb(102,153,102);
+}
+#vk, #inst, #fb, #numb{
+	height: 50px;
+	width: 200px;
+	border-radius: 50px 50px;
+	border-style: none;
+ 	outline: none;
+	font-size: 20px;
+	display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    cursor: pointer;
+}
+#vk{ background-color: #4a76a8; color: white; font-family: monospace; font-weight: 900;}
+#inst{ background-color: #fff; color: black; font-family: cursive; font-weight: 300;}
+#fb { background-color: #385898; color: white; font-family: sans-serif;font-weight: 500;}
+#numb { background-color: #9AE69A; color: black; font-family: sans-serif;}
+.ContactLinks{
+	margin: 0 auto;
+	max-width: 1400px;
+}
+#PhoneNumber{
+	position: relative;
+	top: 0px;
+	font-family: Verdana;
+	font-size: 24px;
+	margin: 20px auto;
+	text-align: center;
+	display: none;
+}
