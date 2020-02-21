@@ -85,5 +85,5 @@ section{padding: 40px 220px;}
 	display: none;
 }
 
-@media screen and (max-width: 1140px) { html, body { margin: 0;	min-width: 1020px;} section{padding: 40px 60px;} footer{padding: 20px 60px;}
-@media screen and (max-width: 992px) { html, body { margin: 0;	min-width: 932px;} section{padding: 40px 30px;} footer{padding: 20px 30px;}
+@media screen and (max-width: 1140px) { html, body { margin: 0;	min-width: 1020px;} section{padding: 40px 60px;} footer{padding: 20px 60px;}}
+@media screen and (max-width: 992px) { html, body { margin: 0;	min-width: 932px;} section{padding: 40px 30px;} footer{padding: 20px 30px;}}
