@@ -84,3 +84,6 @@ section{padding: 40px 220px;}
 	text-align: center;
 	display: none;
 }
+
+@media screen and (max-width: 1140px) { html, body { margin: 0;	min-width: 1020px;} section{padding: 40px 60px;}}
+@media screen and (max-width: 992px) { html, body { margin: 0;	min-width: 932px;} section{padding: 40px 30px;}}
