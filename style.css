@@ -85,12 +85,12 @@ section{padding: 40px 220px;}
 	display: none;
 }
 
-@media screen and (max-width: 1140px){
+@media screen and (max-width: 1240px){
 	html, body { margin: 0;	min-width: 1020px;} section{padding: 40px 60px;} footer{padding: 20px 60px;}
 	#vk, #inst, #fb, #numb{	height: 65px; width: 260px; border-radius: 64px 64px; font-size: 26px; margin: 25px auto;}
 	.storypart{	margin: 60px auto;}
 	}
-@media screen and (max-width: 992px){
+@media screen and (max-width: 1080px){
 	html, body { margin: 0;	min-width: 932px;} section{padding: 40px 30px;} footer{padding: 20px 30px;}
 	#vk, #inst, #fb, #numb{	height: 80px; width: 320px; border-radius: 80px 80px; font-size: 40px; margin: 40px auto;}
 	h1 {font-size: 82px;}	h2 {font-size: 72px;}	p {font-size: 28px;}
