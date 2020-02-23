@@ -23,8 +23,7 @@ section{padding: 40px 220px;}
 	display: block;
 	margin-left: auto;
 	margin-right: 0;
-	max-height: 600px;
-	transform: scale(-1, 1);
+	max-height: 560px;
 }
 #aboutmesect div{
 	margin: 0 auto;
