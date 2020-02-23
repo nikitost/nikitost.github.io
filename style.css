@@ -95,5 +95,5 @@ section{padding: 40px 220px;}
 	#vk, #inst, #fb, #numb{	height: 100px; width: 400px; border-radius: 100px 100px; font-size: 48px; margin: 40px auto;}
 	h1 {font-size: 82px;}	h2 {font-size: 72px;}	p {font-size: 36px; line-height: 1.5;}
 	#aboutmesect p{margin: 0;}
-	.storypart {margin: 100px auto;}
+	.storypart {margin: 100px auto; max-width: 800px;}
 }
