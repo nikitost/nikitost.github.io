@@ -96,4 +96,5 @@ section{padding: 40px 220px;}
 	h1 {font-size: 82px;}	h2 {font-size: 72px;}	p {font-size: 34px; line-height: 1.25;}
 	#aboutmesect p{margin: 0; max-width: 100%;}
 	.storypart {margin: 100px auto;}
+	#PhoneNumber {font-size: 40px;}
 }
