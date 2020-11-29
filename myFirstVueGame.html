@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue Learn Project</title>
+	<style>
+		.circle {
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border:1px solid black;
+			display: inline-block;
+			margin: 40px;
+		}
+		.red {background: red;}
+		.blue {background: blue;}
+		.green {background: green;}
+		.gamerectangle {
+			position: fixed;
+			left: 100px;
+			top: 100px;
+			display: block;
+			width: 500px;
+			height: 500px;
+			border:3px solid black;
+		}
+		.aim{
+			position: fixed;
+			top: 100px;
+			left: 100px;
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			border:1px solid black;
+			cursor: none;
+		}
+		.target{
+			position: fixed;
+			width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border:1px solid black;
+			cursor: none;
+		}
+		.target p{
+			margin: 0;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);
+		}
+		.menu{
+			display: block;
+			position: fixed;
+			left: 700px;
+			top: 100px;
+			max-width: 600px;
+			min-width: 300px;
+			font-family: "Comic Sans MS";
+			font-size: 20px;
+		}
+		.menu p{
+			margin: 0;
+			color: #4e4e4e;
+		}
+		.menu button{
+			outline: none;
+			display: block;
+			margin: 20px 0;
+			width: 150px;
+			height: 50px;
+			border-radius: 25px;
+
+		}
+		.menu s{
+			color: #bababa;
+		}
+		.score, .timer{
+			display: block;
+			position: fixed;
+			font-family: Arial;
+			font-size: 30px;
+		}
+		.timer{
+			left: 450px;
+			top: 60px;
+			font-weight: bold;
+		}
+		.score{
+			left: 100px;
+			top: 60px;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-on:mousemove="handleMouse" class="gamerectangle">
+			<div class="aim" v-bind:style="{'background-color': color, top: y + 'px', left: x +'px'}"></div>
+			<div v-on:click="shot" class="target" v-bind:style="{top: targetY + 'px', left: targetX +'px'}"><p>+</p></div>
+		</div>
+		<div class="score"> Очки: {{score}} </div>
+		<div class="timer"> Время: {{currentTime}} </div>
+		<div class = "menu">
+			<p>Привет! Добро пожаловать в <s>сор</s>тир :)
+				<br>Ты зарабатываешь очки за стрельбу по белым мишеням
+				<br>После каждого выстрела мишень появляется в другом месте в пледелах поля
+				<br>Красный прицел - мимо мишени, если кликнешь - ничего не произойдёт.
+				<br>Зелёный - можно стрелять.
+				<br>Жёлтый - центр! Стреляй быстрее!
+				<br>Чем ближе к центру, тем больше очков. Жёлтый прицел утраивает очки за выстрел.
+				<br>Можешь потренироваться до запуска таймера, покажутся очки за текущий выстрел.
+				<br>Таймер можно включить пробелом, чтобы быстрее начать.</p>
+			<button v-on:click="startGame" @keyup.space="onSpace()">{{bLabel}}</button>
+			<p>Твой последний счёт: {{totalScore}}</p>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="scripts/main.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data: {
+				x: 0,
+				y: 0,
+				circleX: 0,
+				circleY: 0,
+				targetX: 150,
+				targetY: 150,
+				deltaX: 0,
+				deltaY: 0,
+				color: 'red',
+				top: 200,
+				left: 100,
+				score: 0,
+				currentTime: 30,
+				timer: null,
+				bLabel: 'СТАРТ',
+				inGame: false,
+				totalScore: 0
+			},
+			computed:{
+			},
+			methods:{
+				handleMouse: function(event){
+					this.circleX = event.clientX - 25
+					this.circleY = event.clientY - 25
+					this.deltaX = Math.abs(this.targetX + 25 - this.circleX)
+					this.deltaY = Math.abs(this.targetY + 25 - this.circleY)
+
+					if (this.circleX >= 95 && this.circleX <= 555 && this.circleY >= 95 && this.circleY <= 555) {
+						if(this.deltaY < 4 && this.deltaX < 4){
+							this.color = 'yellow'
+						}
+						else if(this.deltaY < 50 && this.deltaX < 50){
+							this.color = 'green'
+						}
+						else{
+							this.color = 'red'
+						}
+						this.x = this.circleX
+						this.y = this.circleY
+					}
+				},
+				shot: function (event){
+					if (this.inGame){
+						if(this.color === 'yellow')
+							this.score += 3 * (200 - this.deltaX - this.deltaY)
+						else
+							this.score += 200 - this.deltaX - this.deltaY
+					}
+					else{
+						if(this.color === 'yellow')
+							this.score = 3 * (200 - this.deltaX - this.deltaY)
+						else
+							this.score = 200 - this.deltaX - this.deltaY
+					}
+					this.targetX = 100 + Math.floor(Math.random() * Math.floor(400))
+					this.targetY = 100 + Math.floor(Math.random() * Math.floor(400))
+				},
+				startGame() {
+					clearTimeout(this.timer)
+					this.score = 0
+					this.currentTime = 30
+					this.bLabel = 'ЗАНОВО'
+					this.inGame = true
+					this.startTimer()
+				},
+				startTimer() {
+					this.timer = setInterval(() => {
+						this.currentTime--
+					}, 1000)
+				},
+				stopTimer() {
+					clearTimeout(this.timer)
+					this.inGame = false
+					this.totalScore = this.score
+				}
+			},
+			updated: function (){
+				console.log('updtd')
+			},
+			onSpace: function (){
+				this.startGame()
+			},
+			watch: {
+				currentTime(time) {
+					if (time === 0) {
+						this.stopTimer()
+					}
+				}
+			},
+		})
+	</script>
+</body>
+</html>
